@@ -1,0 +1,12 @@
+INTERFACE %{WORD}
+MILLISECS (?:[0-9]{3})
+MICROSECS (?:[0-9]{6})
+TIMESTAMP_MILLI %{MONTH} +%{MONTHDAY} %{TIME}.%{MILLISECS}
+TIMESTAMP_MICRO %{MONTH} +%{MONTHDAY} %{TIME}.%{MICROSECS}
+
+PF_RULE %{INT}
+PF_MATCH %{NOTSPACE}
+PF_ACTION (?:(pass|block))
+PF_DIRECTION (?:(in|out))
+
+PFLOG %{TIMESTAMP_MICRO:firewall_timestamp} rule %{PF_RULE:pf_rule}/\(%{PF_MATCH:pf_match}\) %{PF_ACTION:pf_action} %{PF_DIRECTION:pf_direction} on %{INTERFACE:interface}: %{IP:src_ip}(?:\.%{INT:src_port})? > %{IP:dst_ip}(?:\.%{INT:dst_port})?: %{GREEDYDATA:misc}

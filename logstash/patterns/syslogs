@@ -1,0 +1,7 @@
+SHORTMAC (?:[a-f0-9]{12})
+
+FREEBSDSYSLOG %{SYSLOGTIMESTAMP:syslog_timestamp} (?:<%{WORD:syslog_facility}.%{LOGLEVEL:syslog_severity}> )?%{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}
+
+OPENWRTSYSLOG %{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}
+
+UBNTSYSLOG <%{POSINT:syslog_pid}>%{SYSLOGTIMESTAMP:syslog_timestamp} \(\"%{WORD:ubnt_product},%{SHORTMAC:mac},%{DATA:ubnt_version}\"\) %{DATA:syslog_program}: %{GREEDYDATA:syslog_message}
