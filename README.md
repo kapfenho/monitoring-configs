@@ -7,10 +7,10 @@ built with open source components.
 Grouped by source type we are using two streams. The stream name refers
 to the input type:
 
-* Metrics Stream
+* Metric Stream
 * Log Stream
 
-The metrics stream gets all types of metrics - integers, floats,
+The metric stream gets all types of metrics - integers, floats,
 percentages, gauges. Those metrics may be pulled periodically from a
 system or sent by an application during the execution of a business
 process. Most systems support this notification types by supporting a
@@ -24,11 +24,11 @@ metrics we wanna get.
 Components
 ----------
 
-* Metrics Stream
+* Metric Stream
   - Grafana: user interface
-  - Graphite: metrics database
+  - Graphite: metric database
   - Riemann: routing engine, business logic
-  - Collectd: metrics collector
+  - Collectd: metric collector
 * Log Stream
   - Kibana: user interface
   - Elasticsearch: text database
@@ -36,8 +36,8 @@ Components
   - Beats: log record collector
 
 
-Metrics Stream
---------------
+Metric Stream
+-------------
 
 We collect our metrics very frequently, that is every other second. We
 keep this data for 24 h before the first consolidation is applied. The
@@ -109,3 +109,4 @@ firewall log records.
 * eMail Services (OpenSMTPd, Spamd, Dovecot)
 * Nginx access and error log
 * OpenLDAP (with slapd commands)
+
